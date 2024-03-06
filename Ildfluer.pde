@@ -1,19 +1,22 @@
 //Firefly program
-Firefly[] fireflies = new Firefly[200];
+Firefly[] fireflies = new Firefly[800];
+
+int borderMargin = 10;
+int rateOfCharge = 10;
 
 void setup() {
-
-  size(1000, 800);
+  size(1000, 700);
 
   for (int i = 0; i < fireflies.length; i++) {
-    fireflies[i] = new Firefly(random(10, width-10), random(150, height-10), 120, 1000, random(2,10)); // Pass speed as i+1 to vary speed
-    //fireflies[i] = new Firefly(random(40, 80), random(40, 80), 120, 1000, random(2, 10));
+    //firefly position X, firefly position Y, totalCharge, chargeRate
+    fireflies[i] = new Firefly(random(borderMargin, width-borderMargin), random(borderMargin, height-borderMargin), (int)random(-3000, 3000), rateOfCharge);
   }
 }
 
 void draw() {
-  background(0);
+  background(20);
   for (int i = 0; i < fireflies.length; i++) {
     fireflies[i].display();
+    fireflies[i].move();
   }
 }
